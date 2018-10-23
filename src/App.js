@@ -1,28 +1,23 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import ReactDOM from 'react-dom';
+import { Route } from 'react-router-dom';
+import List from './pages/List';
+import Home from './pages/Home';
+import Navi from './components/Navi';
+import config from './config/config';
 
-class App extends Component {
-  render() {
+console.log(config.apiKey);
+
+const App = () => {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
+        <div>
+        <Navi />  
+        <Route exact path="/home" component={Home} />
+        <Route path="/list" component={List} />
+        {/* <Route exact path="/" component={List}></Route> */}
+        </div>
+    )
   }
-}
 
-export default App;
+ReactDOM.render(App, document.getElementById('root'))
+export default App
