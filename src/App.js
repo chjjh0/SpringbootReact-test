@@ -4,6 +4,7 @@ import { Route } from 'react-router-dom';
 import List from './pages/List';
 import Home from './pages/Home';
 import Navi from './components/Navi';
+import Xmlparser from './XmlParsing-ex';
 import config from './config/config';
 
 console.log(config.apiKey);
@@ -11,7 +12,7 @@ console.log(config.apiKey);
 const App = () => {
     return (
         <div>
-        <Navi />  
+        <Navi />
         <Route exact path="/home" component={Home} />
         <Route path="/list" component={List} />
         {/* <Route exact path="/" component={List}></Route> */}

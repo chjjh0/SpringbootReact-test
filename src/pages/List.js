@@ -20,6 +20,45 @@ class List extends Component {
     super(props);
     this.toggle = this.toggle.bind(this);
     this.state = { collapse: false };
+    $(document).ready(function(){
+      $.ajax({
+          crossOrigin: true,
+          url: "http://api.saramin.co.kr/job-search?keywords=react&count=5",
+          dataType: "xml",
+          success: function(result){
+              console.log(result);
+              $(result).find('job').each(function(q){
+              $('.cardTitle').eq(q).text($(this).find("name").text())
+              });
+              $(result).find('job').each(function(q){
+                $('.cardText').eq(q).text($(this).find("title").text())
+              });
+              $(result).find('job').each(function(q){
+                $('.location').eq(q).text($(this).find("location").text())
+              });
+              $(result).find('job').each(function(q){
+                $('.jobType').eq(q).text($(this).find("job-type").text())
+              }); 
+              $(result).find('job').each(function(q){
+                $('.industry').eq(q).text($(this).find("industry").text())
+              });
+              $(result).find('job').each(function(q){
+                $('.jobCategory').eq(q).text($(this).find("job-category").text())
+              });
+              $(result).find('job').each(function(q){
+                $('.experienceLevel').eq(q).text($(this).find("experience-level").text())
+              });
+              $(result).find('job').each(function(q){
+                $('.requiredEduLevel').eq(q).text($(this).find("required-education-level").text())
+              });
+              $(result).find('job').each(function(q){
+                $('.keyword').eq(q).text($(this).find("keyword").text())
+              });
+              
+          }
+      });
+});
+
   }
   toggleNavbar() {
     this.setState({
@@ -47,15 +86,21 @@ class List extends Component {
       <div>
       <Card>
         <CardBody>
-          <CardTitle>{count++}</CardTitle>
-          <CardText>Content</CardText>
+          <CardTitle className="cardTitle"></CardTitle>
+          <CardText className="cardText"></CardText>
           <Button color="primary" id="toggler1" style={{ marginBottom: '1rem' }}>
           Toggle
           </Button>
           <UncontrolledCollapse toggler="#toggler1">
           <Card>
             <CardBody>
-            Detail Content
+              <div className="location"></div>
+              <div className="jobType"></div>
+              <div className="industry"></div>
+              <div className="jobCategory"></div>
+              <div className="experienceLevel"></div>
+              <div className="requiredEduLevel"></div>
+              <div className="keyword"></div>
             </CardBody>
           </Card>
           </UncontrolledCollapse>
@@ -65,8 +110,8 @@ class List extends Component {
     <div>
       <Card>
         <CardBody>
-          <CardTitle>{count++}</CardTitle>
-          <CardText>Content</CardText>
+          <CardTitle className="cardTitle"></CardTitle>
+          <CardText className="cardText"></CardText>
           <Button color="primary" id="toggler2" style={{ marginBottom: '1rem' }}>
           Toggle
           </Button>
@@ -83,8 +128,8 @@ class List extends Component {
     <div>
       <Card>
         <CardBody>
-          <CardTitle>{count++}</CardTitle>
-          <CardText>Content</CardText>
+          <CardTitle className="cardTitle"></CardTitle>
+          <CardText className="cardText"></CardText>
           <Button color="primary" id="toggler3" style={{ marginBottom: '1rem' }}>
           Toggle
           </Button>
@@ -101,8 +146,8 @@ class List extends Component {
     <div>
       <Card>
         <CardBody>
-          <CardTitle>{count++}</CardTitle>
-          <CardText>Content</CardText>
+          <CardTitle className="cardTitle"></CardTitle>
+          <CardText className="cardText"></CardText>
           <Button color="primary" id="toggler4" style={{ marginBottom: '1rem' }}>
           Toggle
           </Button>
@@ -119,8 +164,8 @@ class List extends Component {
     <div>
       <Card>
         <CardBody>
-          <CardTitle>{count++}</CardTitle>
-          <CardText>Content</CardText>
+          <CardTitle className="cardTitle"></CardTitle>
+          <CardText className="cardText"></CardText>
           <Button color="primary" id="toggler5" style={{ marginBottom: '1rem' }}>
           toggle
           </Button>

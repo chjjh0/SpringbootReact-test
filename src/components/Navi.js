@@ -2,10 +2,8 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { Row, Col, Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem } from 'reactstrap';
 import '../App';
-import $ from 'jquery';
 import Logo from '../img/logo.jpg';
-import App from '../App';
-window.$ = $;
+
 
 // ... other imports here
 
@@ -34,7 +32,7 @@ class Navi extends React.Component {
         <Row>
           <Col>
           <NavbarBrand href="/" className="mr-auto">
-          <img src={Logo} height="50"/>
+          <img src={Logo} height="50" alt="logo"/>
           </NavbarBrand>
   
           
